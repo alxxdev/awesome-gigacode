@@ -13,4 +13,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      # awesome-lint's awesome-github rule inspects the push remote URL
+      # and fails unless it points to GitHub, so point it at the GitHub mirror.
+      - name: Point remote at GitHub for awesome-lint
+        run: git remote set-url origin https://github.com/alxxdev/awesome-gigacode
       - run: npx awesome-lint
